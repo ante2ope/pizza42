@@ -157,6 +157,8 @@ const updateUI = async () => {
       await auth0.getUser()
     );
 
+    document.getElementById("imgProfile").src = await auth0.getUser().picture;
+  
   } else {
     document.getElementById("gated-content").classList.add("hidden");
   }  
