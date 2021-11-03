@@ -190,7 +190,7 @@ const callApi = async () => {
     // Display the result in the output element
     const responseElement = document.getElementById("api-call-result");
 
-    responseElement.innerText = JSON.stringify(responseData, {}, 2);
+    responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
 
   } catch (e) {
     // Display errors in the console
