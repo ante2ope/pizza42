@@ -194,45 +194,11 @@ const callApi = async () => {
     responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
     
     if (!user.email_verified) {
-      var r = confirm("You must verify your email address before placing an order! Choose YES to re-send the confirmation email.");
-      var params = {
-        user_id: user.user_id
-      };
-      console.log("user object: ", user);
-
-      var ManagementClient = require('auth0@2.9.1').ManagementClient;
-      var management = new ManagementClient({
-        token: auth0.accessToken,
-        domain: auth0.domain
-      });
-      
-      management.sendEmailVerification(params, function (err) {
-       if (err) {
-         // Handle error.
-         console.log(err);
-       }
-       console.log("email sent?");
-
-       callback(null, user, context);
-      });
+      var r = alert("You must verify your email address before placing an order!");
       return;
     }
-    //just a test for me...
-      var params = {
-        user_id: user.user_id
-      };
-      console.log("user object: ", user);
-
-      management.sendEmailVerification(params, function (err) {
-       if (err) {
-         // Handle error.
-         console.log(err);
-       }
-       console.log("email sent?");
-
-       callback(null, user, context);
-      });
-
+    
+    
   } catch (e) {
     // Display errors in the console
     console.error(e);
