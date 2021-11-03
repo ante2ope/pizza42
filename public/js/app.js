@@ -147,6 +147,7 @@ const updateUI = async () => {
 
   // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
+    var oUser = await auth0.getUser();
     document.getElementById("gated-content").classList.remove("hidden");
 
     document.getElementById(
@@ -154,10 +155,10 @@ const updateUI = async () => {
     ).innerHTML = await auth0.getTokenSilently();
 
     document.getElementById("ipt-user-profile").textContent = JSON.stringify(
-      await auth0.getUser()
+      oUser
     );
 
-    document.getElementById("imgProfile").src = await auth0.getUser().picture;
+    document.getElementById("imgProfile").src = oUser.picture;
   
   } else {
     document.getElementById("gated-content").classList.add("hidden");
