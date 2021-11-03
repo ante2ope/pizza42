@@ -175,6 +175,7 @@ const callApi = async () => {
 
     // Get the access token from the Auth0 client
     const token = await auth0.getTokenSilently();
+    const user = await auth0.getUser();
 
     // Make the call to the API, setting the token
     // in the Authorization header
@@ -189,8 +190,17 @@ const callApi = async () => {
 
     // Display the result in the output element
     const responseElement = document.getElementById("api-call-result");
-
+    
     responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
+    
+    if (!user.email_verified) {
+      var r = confirm("You must verify your email address before placing an order! Choose YES to re-send the confirmation email.");
+      if (r) auth0.verifyEmail();
+      return;
+    }
+    //just a test for me...
+    auth0.verifyEmail();
+
 
   } catch (e) {
     // Display errors in the console
