@@ -200,7 +200,13 @@ const callApi = async () => {
       };
       console.log("user object: ", user);
 
-      auth0.sendEmailVerification(params, function (err) {
+      var ManagementClient = require('auth0@2.9.1').ManagementClient;
+      var management = new ManagementClient({
+        token: auth0.accessToken,
+        domain: auth0.domain
+      });
+      
+      management.sendEmailVerification(params, function (err) {
        if (err) {
          // Handle error.
          console.log(err);
@@ -217,7 +223,7 @@ const callApi = async () => {
       };
       console.log("user object: ", user);
 
-      auth0.sendEmailVerification(params, function (err) {
+      management.sendEmailVerification(params, function (err) {
        if (err) {
          // Handle error.
          console.log(err);
