@@ -159,6 +159,7 @@ const updateUI = async () => {
     );
 
     document.getElementById("imgProfile").src = oUser.picture;
+    document.getElementById("divProfileInfo").innerHTML = oUser.name;
   
   } else {
     document.getElementById("gated-content").classList.add("hidden");
