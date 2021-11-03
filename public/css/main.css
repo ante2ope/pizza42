@@ -11,5 +11,5 @@ label {
 }
 
 .orderitem:hover {
-  background-color: yellow;
+  background-color: yellow !important;
 }
