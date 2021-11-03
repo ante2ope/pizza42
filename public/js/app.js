@@ -159,7 +159,7 @@ const updateUI = async () => {
     );
 
     document.getElementById("imgProfile").src = oUser.picture;
-    document.getElementById("divProfileInfo").innerHTML = oUser.name;
+    document.getElementById("divProfileInfo").innerHTML = "Logged in as<br/>" + oUser.name + "<br/>" + oUser.email;
   
   } else {
     document.getElementById("gated-content").classList.add("hidden");
