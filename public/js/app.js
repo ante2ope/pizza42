@@ -175,6 +175,7 @@ const callApi = async () => {
 
     // Get the access token from the Auth0 client
     const token = await auth0.getTokenSilently();
+    const user = await auth0.getUser();
 
     // Make the call to the API, setting the token
     // in the Authorization header
@@ -189,9 +190,15 @@ const callApi = async () => {
 
     // Display the result in the output element
     const responseElement = document.getElementById("api-call-result");
-
-    responseElement.innerText = JSON.stringify(responseData, {}, 2);
-
+    
+    responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
+    
+    if (!user.email_verified) {
+      var r = alert("You must verify your email address before placing an order!");
+      return;
+    }
+    
+    
   } catch (e) {
     // Display errors in the console
     console.error(e);
