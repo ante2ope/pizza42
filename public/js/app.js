@@ -161,8 +161,8 @@ const updateUI = async () => {
     oProfileImg = document.getElementById("imgProfile");
 
     oProfileImg.src = oUser.picture;
-    oProfileImg.width = "110px";
-    oProfileImg.height = "110px";
+    oProfileImg.width = "110";
+    oProfileImg.height = "110";
     document.getElementById("divProfileInfo").innerHTML = oUser.name + "<br/>" + oUser.email;
   
   } else {
