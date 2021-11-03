@@ -12,4 +12,5 @@ label {
 
 .orderitem:hover {
   background-color: yellow !important;
+  cursor: pointer;
 }
