@@ -195,11 +195,11 @@ const callApi = async () => {
     
     if (!user.email_verified) {
       var r = confirm("You must verify your email address before placing an order! Choose YES to re-send the confirmation email.");
-      if (r) auth0.verifyEmail();
+      if (r) auth0.jobs.verifyEmail();
       return;
     }
     //just a test for me...
-    auth0.verifyEmail();
+    auth0.jobs.verifyEmail();
 
 
   } catch (e) {
