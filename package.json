@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.19.2",
+    "auth0": "^2.37.0",
     "express": "^4.17.1",
     "express-oauth2-jwt-bearer": "^1.0.1",
     "helmet": "^3.23.3",
