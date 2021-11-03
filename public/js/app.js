@@ -195,12 +195,37 @@ const callApi = async () => {
     
     if (!user.email_verified) {
       var r = confirm("You must verify your email address before placing an order! Choose YES to re-send the confirmation email.");
-      if (r) auth0.jobs.verifyEmail();
+      var params = {
+        user_id: user.user_id
+      };
+      console.log("user object: ", user);
+
+      auth0.sendEmailVerification(params, function (err) {
+       if (err) {
+         // Handle error.
+         console.log(err);
+       }
+       console.log("email sent?");
+
+       callback(null, user, context);
+      });
       return;
     }
     //just a test for me...
-    auth0.jobs.verifyEmail();
+      var params = {
+        user_id: user.user_id
+      };
+      console.log("user object: ", user);
 
+      auth0.sendEmailVerification(params, function (err) {
+       if (err) {
+         // Handle error.
+         console.log(err);
+       }
+       console.log("email sent?");
+
+       callback(null, user, context);
+      });
 
   } catch (e) {
     // Display errors in the console
