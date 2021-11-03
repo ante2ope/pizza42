@@ -7,18 +7,19 @@
   </head>
 
   <body>
-    <h2>Welcome to Pizza 42!</h2>
-    <p>We live to serve you the BEST piping hot pies!</p>
     <div id="divProfile">
       <img id="imgProfile" />
       <div id="divProfileInfo"></div>
+      <br/>
+      <button id="btn-login" disabled="true" onclick="login()">Log in</button>
+      <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
+      <button id="btn-call-api" disabled="true" onclick="callApi()">Call Api</button>
     </div>
-    <button id="btn-login" disabled="true" onclick="login()">Log in</button>
-    <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
-    <button id="btn-call-api" disabled="true" onclick="callApi()">Call Api</button>
 
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
     <script src="js/app.js"></script>
+    <h2>Welcome to Pizza 42!</h2>
+    <p>We live to serve you the BEST piping hot pies!</p>
 
     <br/><br/><br/>
     <div class="hidden" id="gated-content">
