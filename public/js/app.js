@@ -157,8 +157,12 @@ const updateUI = async () => {
     document.getElementById("ipt-user-profile").textContent = JSON.stringify(
       oUser
     );
+    
+    oProfileImg = document.getElementById("imgProfile");
 
-    document.getElementById("imgProfile").src = oUser.picture;
+    oProfileImg.src = oUser.picture;
+    oProfileImg.width = "110";
+    oProfileImg.height = "110";
     document.getElementById("divProfileInfo").innerHTML = oUser.name + "<br/>" + oUser.email;
   
   } else {
