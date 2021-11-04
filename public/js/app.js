@@ -205,7 +205,6 @@ const callApi = async () => {
         headers: {
           Authorization: `Bearer ${token}`
         },
-        userid: user.user_id,
         params: params,
         metadata: metadata
       });

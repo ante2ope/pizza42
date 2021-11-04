@@ -50,7 +50,7 @@ app.get('/api/updateUserProfile', checkJwt, function(req, res) {
    }
   });*/
   
-  management.users.updateUserMetadata(params, metadata, function (err, user) {
+  management.users.updateUserMetadata(req.params, req.metadata, function (err, user) {
     if (err) {
       // Handle error.
       res.send({
