@@ -2,12 +2,23 @@ const express = require("express");
 const { auth } = require("express-oauth2-jwt-bearer");
 const { join } = require("path");
 const authConfig = require("./auth_config.json");
+const ManagementClient = require('auth0').ManagementClient;
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Serve static assets from the /public folder
 app.use(express.static(join(__dirname, "public")));
+
+const { requiredScopes } = require('express-oauth2-jwt-bearer');
+
+const checkScopes = requiredScopes('read:messages');
+
+app.get('/api/private-scoped', checkJwt, checkScopes, function(req, res) {
+  res.json({
+    message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'
+  });
+});
 
 // create the JWT middleware
 const checkJwt = auth({
@@ -35,7 +46,6 @@ app.use(function(err, req, res, next) {
   if (err.name === "UnauthorizedError") {
     return res.status(401).send({ msg: "Invalid token" });
   }
-  else return res.status(500).send({ msg: "unkown error"});
 
   next(err, req, res);
 });

@@ -1,5 +1,6 @@
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
+let management = null;
 
 /**
  * Starts the authentication flow
@@ -59,6 +60,18 @@ const configureClient = async () => {
     client_id: config.clientId,
     audience: config.audience
   });
+
+  management = await new ManagementClient({
+    domain: '{YOUR_ACCOUNT}.auth0.com',
+    clientId: '{YOUR_NON_INTERACTIVE_CLIENT_ID}',
+    clientSecret: '{YOUR_NON_INTERACTIVE_CLIENT_SECRET}',
+    scope: "read:users write:users",
+    audience: 'https://{YOUR_TENANT_NAME}.auth0.com/api/v2/',
+    tokenProvider: {
+     enableCache: true,
+     cacheTTLInSeconds: 10
+   }
+  });  
 };
 
 /**
@@ -196,6 +209,24 @@ const callApi = async () => {
     if (!user.email_verified) {
       var r = alert("You must verify your email address before placing an order!");
       return;
+    } else {
+      //check if any orders exist....
+      var metadata = { "orders": []};
+      if (user.meta_data) {
+        metadata = user.meta_data;
+      }      
+      metadata.orders.push(order);
+      
+      var params = { id: user.user_id };
+      management.users.updateUserMetadata(params, metadata, function (err, user) {
+        if (err) {
+          // Handle error.
+          alert("There was an error updating your order history\n\n" + err.description);
+        }
+      
+        // Updated user.
+        console.log(user);
+      });
     }
     
     
