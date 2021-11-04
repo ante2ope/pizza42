@@ -6,9 +6,9 @@ const ManagementClient = require('auth0').ManagementClient;
 let management = null;
 
 let mgmtConfig = {  
-  "mgmtAudience": `https://${authConfig.domain}/api/v2/`,
-  "mgmtSecret": "yoVJFKpvL4qhEo9JSZAF0R3pVbCUvZN3gZhV46LoZ-3WLt6h-WaYbciWkltf-ukh",
-  "mgmtClientId": "T1gik3JvF1xPEnWJAPebelp5UmflM2Hd"
+  "audience": `https://${authConfig.domain}/api/v2/`,
+  "secret": "yoVJFKpvL4qhEo9JSZAF0R3pVbCUvZN3gZhV46LoZ-3WLt6h-WaYbciWkltf-ukh",
+  "clientid": "T1gik3JvF1xPEnWJAPebelp5UmflM2Hd"
 }
 
 const app = express();
@@ -33,22 +33,24 @@ const checkJwt2 = auth({
 });
 
 app.get('/api/updateUserProfile', checkJwt, function(req, res) {
+
+  /*
   var management = new ManagementClient({
     token: auth0.accessToken,
     domain: auth0.domain
   });
-/*
+  */
+
   var management = new ManagementClient({
     domain: authConfig.domain,
-    clientId: mgmtConfig.mgmtClientId,
-    clientSecret: mgmtConfig.mgmtSecret,
+    clientId: mgmtConfig.clientid,
+    clientSecret: mgmtConfig.secret,
     scope: "read:users write:users",
-    audience: mgmtConfig.mgmtAudience,
+    audience: mgmtConfig.audience,
     tokenProvider: {
      enableCache: true,
      cacheTTLInSeconds: 10
-   }
-  });*/
+  }});
   
   management.users.updateUserMetadata(req.params, req.metadata, function (err, user) {
     if (err) {
