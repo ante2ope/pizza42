@@ -4,6 +4,7 @@ const { join } = require("path");
 const authConfig = require("./auth_config.json");
 const ManagementClient = require('auth0').ManagementClient;
 let management = null;
+
 let mgmtConfig = {  
   "mgmtAudience": "https://ante1ope.us.auth0.com/api/v2/",
   "mgmtSecret": "yoVJFKpvL4qhEo9JSZAF0R3pVbCUvZN3gZhV46LoZ-3WLt6h-WaYbciWkltf-ukh",
@@ -32,14 +33,13 @@ app.get('/api/updateUserProfile', checkJwt, checkScopes, function(req, res) {
     clientId: mgmtConfig.mgmtClientId,
     clientSecret: mgmtConfig.mgmtSecret,
     scope: "read:users write:users",
-    audience: 'https://{ante1ope.us.auth0.com/api/v2/',
+    audience: 'https://ante1ope.us.auth0.com/api/v2/',
     tokenProvider: {
      enableCache: true,
      cacheTTLInSeconds: 10
    }
   });
   
-  var params = { id: user.user_id };
   management.users.updateUserMetadata(params, metadata, function (err, user) {
     if (err) {
       // Handle error.
