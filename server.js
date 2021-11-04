@@ -6,7 +6,7 @@ const ManagementClient = require('auth0').ManagementClient;
 let management = null;
 
 let mgmtConfig = {  
-  "mgmtAudience": "https://ante1ope.us.auth0.com/api/v2/",
+  "mgmtAudience": `https://${authConfig.domain}/api/v2/`,
   "mgmtSecret": "yoVJFKpvL4qhEo9JSZAF0R3pVbCUvZN3gZhV46LoZ-3WLt6h-WaYbciWkltf-ukh",
   "mgmtClientId": "T1gik3JvF1xPEnWJAPebelp5UmflM2Hd"
 }
@@ -28,17 +28,17 @@ const checkJwt = auth({
 });
 
 const checkJwt2 = auth({
-  audience: 'https://ante1ope.us.auth0.com/api/v2/',
+  audience: mgmtConfig.mgmtAudience,
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
 app.get('/api/updateUserProfile', checkJwt2, checkScopes, function(req, res) {
-  var auth0 = new ManagementClient({
+  var management = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.mgmtClientId,
     clientSecret: mgmtConfig.mgmtSecret,
     scope: "read:users write:users",
-    audience: 'https://ante1ope.us.auth0.com/api/v2/',
+    audience: mgmtConfig.mgmtAudience,
     tokenProvider: {
      enableCache: true,
      cacheTTLInSeconds: 10
