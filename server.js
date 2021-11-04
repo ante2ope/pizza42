@@ -32,11 +32,10 @@ const checkJwt2 = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.get('/api/updateUserProfile', checkJwt, checkScopes, function(req, res) {
+app.get('/api/updateUserProfile', checkJwt, function(req, res) {
   var management = new ManagementClient({
     token: auth0.accessToken,
-    domain: auth0.domain,
-    scope: "read:users write:users"
+    domain: auth0.domain
   });
 /*
   var management = new ManagementClient({
@@ -82,7 +81,7 @@ app.get("/*", (_, res) => {
 
 app.use(function(err, req, res, next) {
   if (err.name === "UnauthorizedError") {
-    return res.status(401).send({ msg: "Invalid token" + "\n\n" + err.description });
+    return res.status(401).send({ msg: "Invalid token" });
   }
 
   next(err, req, res);
