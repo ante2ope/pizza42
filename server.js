@@ -34,6 +34,12 @@ const checkJwt2 = auth({
 
 app.get('/api/updateUserProfile', checkJwt2, checkScopes, function(req, res) {
   var management = new ManagementClient({
+    token: auth0.accessToken,
+    domain: auth0.domain,
+    scope: "read:users write:users"
+  });
+/*
+  var management = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.mgmtClientId,
     clientSecret: mgmtConfig.mgmtSecret,
@@ -43,7 +49,7 @@ app.get('/api/updateUserProfile', checkJwt2, checkScopes, function(req, res) {
      enableCache: true,
      cacheTTLInSeconds: 10
    }
-  });
+  });*/
   
   management.users.updateUserMetadata(params, metadata, function (err, user) {
     if (err) {
