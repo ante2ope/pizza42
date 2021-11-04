@@ -1,6 +1,5 @@
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
-let management = null;
 
 /**
  * Starts the authentication flow
@@ -216,17 +215,15 @@ const callApi = async () => {
         metadata = user.meta_data;
       }      
       metadata.orders.push(order);
-      
-      var params = { id: user.user_id };
-      management.users.updateUserMetadata(params, metadata, function (err, user) {
-        if (err) {
-          // Handle error.
-          alert("There was an error updating your order history\n\n" + err.description);
-        }
-      
-        // Updated user.
-        console.log(user);
+
+      const updateOrderResponse = await fetch("/api/updateUserProfile", {
+        userid: user.user_id,
+        params: params,
+        metadata: metadata
       });
+
+      const oResponseData = await updateOrderResponse.json();
+      alert(JSON.stringify(oResponseData));
     }
     
     

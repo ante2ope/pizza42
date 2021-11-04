@@ -3,6 +3,12 @@ const { auth } = require("express-oauth2-jwt-bearer");
 const { join } = require("path");
 const authConfig = require("./auth_config.json");
 const ManagementClient = require('auth0').ManagementClient;
+let management = null;
+let mgmtConfig = {  
+  "mgmtAudience": "https://ante1ope.us.auth0.com/api/v2/",
+  "mgmtSecret": "yoVJFKpvL4qhEo9JSZAF0R3pVbCUvZN3gZhV46LoZ-3WLt6h-WaYbciWkltf-ukh",
+  "mgmtClientId": "T1gik3JvF1xPEnWJAPebelp5UmflM2Hd"
+}
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,9 +26,30 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.get('/api/private-scoped', checkJwt, checkScopes, function(req, res) {
-  res.json({
-    message: 'Hello from a private endpoint! You need to be authenticated and have a scope of read:messages to see this.'
+app.get('/api/updateUserProfile', checkJwt, checkScopes, function(req, res) {
+  var auth0 = new ManagementClient({
+    domain: authConfig.domain,
+    clientId: mgmtConfig.mgmtClientId,
+    clientSecret: mgmtConfig.mgmtSecret,
+    scope: "read:users write:users",
+    audience: 'https://{ante1ope.us.auth0.com/api/v2/',
+    tokenProvider: {
+     enableCache: true,
+     cacheTTLInSeconds: 10
+   }
+  });
+  
+  var params = { id: user.user_id };
+  management.users.updateUserMetadata(params, metadata, function (err, user) {
+    if (err) {
+      // Handle error.
+      res.send({
+        msg: "There was a problem updating your order status.\n\n" + err.description
+      });
+    }
+  
+    // Updated user.
+    console.log(user);
   });
 });
 
