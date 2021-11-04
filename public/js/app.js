@@ -204,6 +204,7 @@ const callApi = async () => {
       }      
       metadata.orders.push(order);
 
+      var params = { id: user.user_id };
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
         userid: user.user_id,
         params: params,
