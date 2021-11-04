@@ -202,7 +202,7 @@ const callApi = async () => {
       }      
       metadata.orders.push(order);
 
-      var params = { id: user.user_id };
+      var params = { id: user.sub };
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
         headers: {
           Authorization: `Bearer ${token}`
