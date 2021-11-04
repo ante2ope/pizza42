@@ -150,13 +150,9 @@ const updateUI = async () => {
     var oUser = await auth0.getUser();
     document.getElementById("gated-content").classList.remove("hidden");
 
-    document.getElementById(
-      "ipt-access-token"
-    ).innerHTML = await auth0.getTokenSilently();
+    document.getElementById("ipt-access-token").innerHTML = await auth0.getTokenSilently();
 
-    document.getElementById("ipt-user-profile").textContent = JSON.stringify(
-      oUser
-    );
+    document.getElementById("ipt-user-profile").textContent = JSON.stringify(oUser);
     
     oProfileImg = document.getElementById("imgProfile");
 
