@@ -28,7 +28,7 @@ const checkJwt = auth({
 });
 
 const checkJwt2 = auth({
-  audience: mgmtConfig.mgmtAudience,
+  audience: mgmtConfig.audience,
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
@@ -50,7 +50,8 @@ app.get('/api/updateUserProfile', checkJwt, function(req, res) {
     tokenProvider: {
      enableCache: true,
      cacheTTLInSeconds: 10
-  }});
+    }
+  });
   
   management.users.updateUserMetadata(req.params, req.metadata, function (err, user) {
     if (err) {
