@@ -2,7 +2,7 @@ const express = require("express");
 const { auth } = require("express-oauth2-jwt-bearer");
 const { join } = require("path");
 const authConfig = require("./auth_config.json");
-//const ManagementClient = require('auth0').ManagementClient;
+const ManagementClient = require('auth0').ManagementClient;
 
 const app = express();
 const port = process.env.PORT || 3000;
