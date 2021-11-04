@@ -45,7 +45,7 @@ app.get('/api/updateUserProfile', checkJwt, function(req, res) {
     domain: authConfig.domain,
     clientId: mgmtConfig.clientid,
     clientSecret: mgmtConfig.secret,
-    scope: "read:users write:users",
+    scope: "read:users create:users",
     audience: mgmtConfig.audience,
     tokenProvider: {
      enableCache: true,
