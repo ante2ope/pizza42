@@ -173,6 +173,8 @@ const callApi = async () => {
     const token = await auth0.getTokenSilently();
     const user = await auth0.getUser();
 
+    console.log(JSON.stringify(user));
+
     // Make the call to the API, setting the token
     // in the Authorization header
     const response = await fetch("/api/external", {
