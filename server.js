@@ -27,12 +27,7 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-const checkJwt2 = auth({
-  audience: mgmtConfig.audience,
-  issuerBaseURL: `https://${authConfig.domain}`
-});
-
-app.get('/api/updateUserProfile', checkJwt2, function(req, res) {
+app.get("/api/updateUserProfile", checkJwt, function(req, res) {
 
   /*
   var management = new ManagementClient({
