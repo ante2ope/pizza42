@@ -1,6 +1,7 @@
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
 let management = null;
+const ManagementClient = require('auth0').ManagementClient;
 
 /**
  * Starts the authentication flow
@@ -62,11 +63,11 @@ const configureClient = async () => {
   });
 
   management = await new ManagementClient({
-    domain: '{YOUR_ACCOUNT}.auth0.com',
-    clientId: '{YOUR_NON_INTERACTIVE_CLIENT_ID}',
+    domain: config.domain,
+    clientId: config.clientId,
     clientSecret: '{YOUR_NON_INTERACTIVE_CLIENT_SECRET}',
     scope: "read:users write:users",
-    audience: 'https://{YOUR_TENANT_NAME}.auth0.com/api/v2/',
+    audience: config.mgmtAudience,
     tokenProvider: {
      enableCache: true,
      cacheTTLInSeconds: 10
