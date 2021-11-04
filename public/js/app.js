@@ -1,7 +1,6 @@
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
 let management = null;
-const ManagementClient = require('auth0').ManagementClient;
 
 /**
  * Starts the authentication flow
