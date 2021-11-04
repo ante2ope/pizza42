@@ -59,18 +59,6 @@ const configureClient = async () => {
     client_id: config.clientId,
     audience: config.audience
   });
-
-  management = await new ManagementClient({
-    domain: config.domain,
-    clientId: config.clientId,
-    clientSecret: '{YOUR_NON_INTERACTIVE_CLIENT_SECRET}',
-    scope: "read:users write:users",
-    audience: config.mgmtAudience,
-    tokenProvider: {
-     enableCache: true,
-     cacheTTLInSeconds: 10
-   }
-  });  
 };
 
 /**
