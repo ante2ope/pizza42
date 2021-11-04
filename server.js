@@ -2,7 +2,7 @@ const express = require("express");
 const { auth } = require("express-oauth2-jwt-bearer");
 const { join } = require("path");
 const authConfig = require("./auth_config.json");
-const ManagementClient = require('auth0').ManagementClient;
+var ManagementClient = require('auth0').ManagementClient;
 let management = null;
 
 let mgmtConfig = {  
@@ -36,7 +36,7 @@ app.get("/api/updateUserProfile", checkJwt, function(req, res) {
   });
   */
 
-  var management = new ManagementClient({
+  var mgmt = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.clientid,
     clientSecret: mgmtConfig.secret,
@@ -48,7 +48,7 @@ app.get("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
   
-  management.users.updateUserMetadata(req.params, req.metadata, function (err, user) {
+  mgmt.users.updateUserMetadata(req.params, req.metadata, function (err, user) {
     if (err) {
       // Handle error.
       res.send({
