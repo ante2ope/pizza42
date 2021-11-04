@@ -39,6 +39,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 
   function openForm() {
     //write out the current orders to a table
+    var oTbl = document.getElementById("tblDiv");
     var oForm = document.getElementById("myForm");
     tableCreate(oForm, order.orderitems)
     oForm.style.display = "block";
@@ -273,6 +274,11 @@ document.getElementById("myLink").click();
 
 
 <div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <div id="tblDiv"></div>
+
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
 </div>
 
 </body>
