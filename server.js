@@ -27,7 +27,12 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.get('/api/updateUserProfile', checkJwt, checkScopes, function(req, res) {
+const checkJwt2 = auth({
+  audience: 'https://ante1ope.us.auth0.com/api/v2/',
+  issuerBaseURL: `https://${authConfig.domain}`
+});
+
+app.get('/api/updateUserProfile', checkJwt2, checkScopes, function(req, res) {
   var auth0 = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.mgmtClientId,
