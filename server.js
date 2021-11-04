@@ -32,7 +32,7 @@ const checkJwt2 = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.get('/api/updateUserProfile', checkJwt2, checkScopes, function(req, res) {
+app.get('/api/updateUserProfile', checkJwt, checkScopes, function(req, res) {
   var management = new ManagementClient({
     token: auth0.accessToken,
     domain: auth0.domain,
