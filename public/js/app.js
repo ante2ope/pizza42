@@ -212,7 +212,7 @@ const callApi = async () => {
       });
 
       const oResponseData = await updateOrderResponse.json();
-      alert(JSON.stringify(oResponseData));
+      console.log(JSON.stringify(oResponseData));
     }
     
     
