@@ -55,6 +55,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   function tableCreate(el, data)
   {
       var tbl  = document.createElement("table");
+      tbl.style.border = "5px";
       tbl.style.width  = "70%";
 
       for (var i = 0; i < data.length; ++i)
