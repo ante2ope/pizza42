@@ -76,7 +76,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       for (var key in data[i]) {
         var value = data[i][key];
         var td = document.createElement("td");
-        if (key = "#") td.width = "20px;"
+        if (key = "#") td.width = "10px;"
+        else if (key = "price") td.width = "20px;";
         td.innerText = value;
         tr.appendChild(td);
       }
@@ -88,11 +89,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     td.innerText = "Total";
     td.colSpan = 2;
     td.style.textAlign = "right";
+    td.style.borderLeft = "";
+    td.style.borderTop = "3px solid black";
+    td.style.borderRight = "3px solid black";
     tr.appendChild(td);
 
     var td = document.createElement("td");
     td.innerText = value;
-    td.style.textAlign = "right";
+    td.style.textAlign = "left";
     tr.appendChild(td);
 
     el.appendChild(tbl);
@@ -309,8 +313,10 @@ document.getElementById("myLink").click();
     <hr width="90%" />
     <div id="tblDiv" style="width:100%;"></div>
     <hr width="90%" />
-    <button type="button" class="btn checkout" onclick="checkout()">Checkout</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    <div id="buttons" style="text-align: right;">
+      <button type="button" class="btn checkout" onclick="checkout()">Checkout</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </div>
   </form>
 </div>
 
