@@ -17,10 +17,16 @@ label {
 
 table {
   font-size: 11px;
+  width:60%;
 }
 
-table, td {
-  border-right: 1px solid black;
+tr {
+  height: 50px;
+}
+
+td {
+  border-left: 1px solid black;
+  vertical-align: top;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
