@@ -62,13 +62,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
         //header row
         if (i == 0) {
           var tr = tbl.insertRow();
-          for (var key in data) {
-            var value = obj[key];
+          for (var key in data[i]) {
             var td = tr.appendChild(document.createTextNode(key));
           }
         }
         var tr = tbl.insertRow();
-        for (var key in data) {
+        for (var key in data[i]) {
           var value = obj[key];
           var td = tr.appendChild(document.createTextNode(value));            
         }
