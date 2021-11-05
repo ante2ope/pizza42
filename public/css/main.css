@@ -15,6 +15,14 @@ label {
   cursor: pointer;
 }
 
+table:tr {
+  border-bottom: 1px solid black;
+}
+
+table:td {
+  border-right: 1px solid black;
+}
+
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
   background-color: #555;

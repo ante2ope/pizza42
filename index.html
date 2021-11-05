@@ -44,7 +44,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     var oForm = document.getElementById("myForm");
     tableCreate(oTbl, order.orderitems)
     oForm.style.display = "block";
-    window.setTimeout(closeForm, 8000);
+    //window.setTimeout(closeForm, 8000);
   }
   
   function closeForm() {
@@ -55,10 +55,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   function tableCreate(el, data)
   {
       var tbl  = document.createElement("table");
-      tbl.style.border = "5px solid black";
-      tbl.style.width  = "400px;";
-      tbl.style.backgroundColor = "white";
-      tbl.style.color = "black";
+      //tbl.style.border = "1px solid black";
+      tbl.style.width  = "90%;";
+      //tbl.style.backgroundColor = "white";
+      //tbl.style.color = "black";
+      tbl.class = "w3-text-grey";
       
 
       for (var i = 0; i < data.length; ++i)
