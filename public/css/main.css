@@ -30,20 +30,6 @@ td {
   padding: 5px;
 }
 
-/* Button used to open the contact form - fixed at the bottom of the page */
-.open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
-
 /* The popup form - hidden by default */
 .form-popup {
   display: none;
@@ -76,7 +62,10 @@ td {
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+  background-color: darkgrey;
+}
+.form-container .checkout {
+  background-color: darkslategray;
 }
 
 /* Add some hover effects to buttons */
