@@ -54,37 +54,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   // data must be an array of arrays (outer array is rows).
   function tableCreate(el, data)
   {
-      var tbl  = document.createElement("table");
-      //tbl.style.border = "1px solid black";
-      tbl.class = "w3-text-grey";
-      var fTotal = 0;
-      
-      for (var i = 0; i < data.length; ++i)
-      {
-        //header row
-        if (i == 0) {
-          var tr = tbl.insertRow();
-          for (var key in data[i]) {
-            var td = document.createElement("td");
-            td.innerText = key;
-            tr.appendChild(td);
-            //var td = tr.appendChild(document.createTextNode(key));
-          }
-        }
+    var tbl  = document.createElement("table");
+    //tbl.style.border = "1px solid black";
+    tbl.class = "w3-text-grey";
+    var fTotal = 0;
+
+    for (var i = 0; i < data.length; ++i)
+    {
+      //header row
+      if (i == 0) {
         var tr = tbl.insertRow();
         for (var key in data[i]) {
-          var value = data[i][key];
           var td = document.createElement("td");
-          td.innerText = value;
+          td.innerText = key;
           tr.appendChild(td);
-
-          if (key = "price") fTotal += value;
+          //var td = tr.appendChild(document.createTextNode(key));
         }
       }
+
+      var tr = tbl.insertRow();
+      for (var key in data[i]) {
+        var value = data[i][key];
+        var td = document.createElement("td");
+        if (key = "#") td.width = "20px;"
+        td.innerText = value;
+        tr.appendChild(td);
+      }
+      if (key = "price") fTotal += value;
+    }
+  
     var tr = tbl.insertRow();
     var td = document.createElement("td");
-    td.innerText = "Total | ";
-    td.colspan = 2;
+    td.innerText = "Total";
+    td.colSpan = 2;
     td.style.textAlign = "right";
     tr.appendChild(td);
 
@@ -303,9 +305,10 @@ document.getElementById("myLink").click();
 
 <div class="form-popup" id="myForm" width="300px;">
   <form class="form-container" style="width:100%;">
-    <h3>Thank you!</h3>
+    <h1>Thank you!</h1>
+    <hr width="90%" />
     <div id="tblDiv" style="width:100%;"></div>
-    <hr width="90%" color="black" />
+    <hr width="90%" />
     <button type="button" class="btn checkout" onclick="checkout()">Checkout</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
