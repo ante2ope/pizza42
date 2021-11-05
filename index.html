@@ -76,12 +76,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       for (var key in data[i]) {
         var value = data[i][key];
         var td = document.createElement("td");
-        if (key = "#") td.width = "10px;"
-        else if (key = "price") td.width = "20px;";
+        if (key == "#") td.width = "5px;"
+        else if (key == "price") td.width = "10px;";
         td.innerText = value;
         tr.appendChild(td);
+        if (key = "price") fTotal += value;
       }
-      if (key = "price") fTotal += value;
     }
   
     var tr = tbl.insertRow();
@@ -91,12 +91,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     td.style.textAlign = "right";
     td.style.borderLeft = "";
     td.style.borderTop = "3px solid black";
-    td.style.borderRight = "3px solid black";
     tr.appendChild(td);
 
     var td = document.createElement("td");
     td.innerText = value;
     td.style.textAlign = "left";
+    td.style.borderTop = "3px solid black";
     tr.appendChild(td);
 
     el.appendChild(tbl);
