@@ -206,6 +206,10 @@ const callApi = async () => {
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
         headers: {
           Authorization: `Bearer ${token}`
+        },
+        body: {
+          params: params,
+          metadata: metadata
         }
       });
 
