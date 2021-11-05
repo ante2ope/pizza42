@@ -55,8 +55,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   function tableCreate(el, data)
   {
       var tbl  = document.createElement("table");
-      tbl.style.border = "5px";
-      tbl.style.width  = "100%";
+      tbl.style.border = "5px solid black";
+      tbl.style.width  = "400px;";
       tbl.style.backgroundColor = "white";
       tbl.style.color = "black";
       
@@ -286,7 +286,7 @@ document.getElementById("myLink").click();
 
 <div class="form-popup" id="myForm" width="500px;">
   <form class="form-container" style="width:500px;">
-    <div id="tblDiv" style="width:100%;"></div>
+    <div id="tblDiv" style="width:500px;"></div>
 
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
