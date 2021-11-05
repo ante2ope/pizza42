@@ -16,7 +16,7 @@ label {
 }
 
 table {
-  font-size: 11px;
+  font-size: 28px;
   width:60%;
 }
 
@@ -27,6 +27,7 @@ tr {
 td {
   border-left: 1px solid black;
   vertical-align: top;
+  padding: 5px;
 }
 
 /* Button used to open the contact form - fixed at the bottom of the page */
