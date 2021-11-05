@@ -68,7 +68,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
         }
         var tr = tbl.insertRow();
         for (var key in data[i]) {
-          var value = obj[key];
+          var value = data[i][key];
           var td = tr.appendChild(document.createTextNode(value));            
         }
       }
