@@ -67,13 +67,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
         if (i == 0) {
           var tr = tbl.insertRow();
           for (var key in data[i]) {
-            var td = tr.appendChild(document.createTextNode(key));
+            var td = tr.createElement("<td>");
+            td.innerText = key;
+            tr.appendChild(td);
+            //var td = tr.appendChild(document.createTextNode(key));
           }
         }
         var tr = tbl.insertRow();
         for (var key in data[i]) {
           var value = data[i][key];
-          var td = tr.appendChild(document.createTextNode(value));            
+          var td = tr.createElement("<td>");
+          td.innerText = value;
+          tr.appendChild(td);
+          //var td = tr.appendChild(document.createTextNode(value));            
         }
       }
       el.appendChild(tbl);
