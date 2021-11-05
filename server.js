@@ -27,7 +27,7 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.get("/api/updateUserProfile", checkJwt, function(req, res) {
+app.post("/api/updateUserProfile", checkJwt, function(req, res) {
 
   /*
   var management = new ManagementClient({
