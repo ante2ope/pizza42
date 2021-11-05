@@ -15,8 +15,8 @@ label {
   cursor: pointer;
 }
 
-table, tr {
-  border-bottom: 1px solid black;
+table {
+  font-size: 11px;
 }
 
 table, td {
