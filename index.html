@@ -81,19 +81,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
           if (key = "price") fTotal += value;
         }
       }
-      var tr = tbl.insertRow();
-      var td = document.createElement("td");
-      td.innerText = "Total | ";
-      td.colspan = 2;
-      td.style.textAlign = "right";
-      tr.appendChild(td);
+    var tr = tbl.insertRow();
+    var td = document.createElement("td");
+    td.innerText = "Total | ";
+    td.colspan = 2;
+    td.style.textAlign = "right";
 
-      var tr = tbl.insertRow();
-      var td = document.createElement("td");
-      td.innerText = value;
-      td.style.textAlign = "right";
-      tr.appendChild(td);
-  el.appendChild(tbl);
+    var td = document.createElement("td");
+    td.innerText = value;
+    td.style.textAlign = "right";
+    tr.appendChild(td);
+
+    el.appendChild(tbl);
   }
 </script>
 </head>
@@ -301,11 +300,11 @@ document.getElementById("myLink").click();
 </div>
 
 
-<div class="form-popup" id="myForm" width="500px;">
-  <form class="form-container" style="width:500px;">
+<div class="form-popup" id="myForm" width="300px;">
+  <form class="form-container" style="width:100%;">
     <h3>Thank you!</h3>
-    <div id="tblDiv" style="width:500px;"></div>
-    <hr width=60% />
+    <div id="tblDiv" style="width:100%;"></div>
+    <hr width="90%" color="black" />
     <button type="button" class="btn checkout" onclick="checkout()">Checkout</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
