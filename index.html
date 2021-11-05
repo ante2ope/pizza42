@@ -57,8 +57,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       var tbl  = document.createElement("table");
       //tbl.style.border = "1px solid black";
       tbl.class = "w3-text-grey";
+      var fTotal = 0;
       
-
       for (var i = 0; i < data.length; ++i)
       {
         //header row
@@ -77,10 +77,23 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
           var td = document.createElement("td");
           td.innerText = value;
           tr.appendChild(td);
-          //var td = tr.appendChild(document.createTextNode(value));            
+
+          if (key = "price") fTotal += value;
         }
       }
-      el.appendChild(tbl);
+      var tr = tbl.insertRow();
+      var td = document.createElement("td");
+      td.innerText = "Total | ";
+      td.colspan = 2;
+      td.style.textAlign = "right";
+      tr.appendChild(td);
+
+      var tr = tbl.insertRow();
+      var td = document.createElement("td");
+      td.innerText = value;
+      td.style.textAlign = "right";
+      tr.appendChild(td);
+  el.appendChild(tbl);
   }
 </script>
 </head>
@@ -147,7 +160,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
       <hr>
 
-      <h1><b>Pineapple'o'clock</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round">$16.50</span></h1>
+      <h1><b>Pineapple'o'clock</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Pineapple\'o\'clock', 16.5)">$16.50</span></h1>
       <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
       <hr>
 
@@ -168,7 +181,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       <p class="w3-text-grey">Ravioli filled with cheese</p>
       <hr>
       
-      <h1><b>Spaghetti Classica</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Spaghetti Classica', 15.5)">$11.00</span></h1>
+      <h1><b>Spaghetti Classica</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Spaghetti Classica', 11)">$11.00</span></h1>
       <p class="w3-text-grey">Fresh tomatoes, onions, ground beef</p>
       <hr>
 
@@ -178,7 +191,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 
 
     <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
-      <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Seasonal', 5.5)">$5.50</span></h1>
+      <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Seasonal Salad', 5.5)">$5.50</span></h1>
       <p class="w3-text-grey">Ask the waiter</p>
       <hr>
    
