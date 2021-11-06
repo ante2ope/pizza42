@@ -1,5 +1,3 @@
-const { post } = require("superagent");
-
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
 
@@ -179,6 +177,7 @@ const callApi = async () => {
 
     // Make the call to the API, setting the token
     // in the Authorization header
+    /*
     const response = await fetch("/api/external", {
       headers: {
         Authorization: `Bearer ${token}`
@@ -192,7 +191,7 @@ const callApi = async () => {
     const responseElement = document.getElementById("api-call-result");
     
     responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
-    
+    */
     if (!user.email_verified) {
       var r = alert("You must verify your email address before placing an order!");
       return;
