@@ -61,7 +61,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
 
     res.send({
-      msg: JSON.stringify(req.body, null, 2)
+      msg: "this is my response to you!"
     })
   
     // Updated user.
