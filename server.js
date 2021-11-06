@@ -72,7 +72,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
   console.log("TEST: " + util.inspect(req.body));
   //console.log("TEST: " + util.inspect(res.body.orders));
   
-  mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata)
+  mgmt.users.updateUserMetadata(req.body.params, req.body.metadata)
     .then(function () {
       res.send({
         msg: "this is my response to you!"

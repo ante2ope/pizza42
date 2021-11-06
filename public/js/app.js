@@ -197,11 +197,11 @@ const callApi = async () => {
       return;
     } else {
       //check if any orders exist....
-      var metadata = { "user_metadata": { "orders": []}};
+      var metadata = { "orders": []};
       if (user.meta_data) {
-        metadata.user_metadata = user.meta_data;
+        metadata = user.meta_data;
       }      
-      metadata.user_metadata.orders.push(order);
+      metadata.orders.push(order);
 
       var params = { id: user.sub };
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
