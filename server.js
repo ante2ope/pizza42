@@ -71,6 +71,8 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
 
   console.log("TEST: " + util.inspect(res.body.params));
   console.log("TEST: " + util.inspect(res.body.orders));
+
+  /*
   
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders)
     .then(function () {
@@ -84,7 +86,8 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
         msg: "There was a problem updating your order status." + JSON.stringify(err)
       });
   });
-  /*
+  */
+  
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders, function (err, user) {
     if (err) {
       // Handle error.
@@ -100,7 +103,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     // Updated user.
     console.log(user);
   });
-  */
+  
 });
 
 // Endpoint to serve the configuration file
