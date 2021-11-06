@@ -50,7 +50,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
-  console.log("TEST: " + JSON.stringify(decycle(res, undefined)));
+  console.log("TEST: " + JSON.stringify(JSON.decycle(res)));
   
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders, function (err, user) {
     if (err) {
