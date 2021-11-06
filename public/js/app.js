@@ -205,9 +205,7 @@ const callApi = async () => {
 
       var params = { id: user.sub };
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=utf-8" },
         method: 'POST',
         body: JSON.stringify({
           params: params,
