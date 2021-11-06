@@ -16,6 +16,8 @@ const port = process.env.PORT || 3000;
 
 // Serve static assets from the /public folder
 app.use(express.static(join(__dirname, "public")));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 const { requiredScopes } = require('express-oauth2-jwt-bearer');
 
@@ -86,9 +88,6 @@ app.use(function(err, req, res, next) {
 
   next(err, req, res);
 });
-
-app.use(express.urlencoded({extended: true}));
-app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 // Listen on port 3000
 app.listen(port, () => console.log("Application running on port 3000"));
