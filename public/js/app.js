@@ -210,10 +210,10 @@ const callApi = async () => {
           Authorization: `Bearer ${token}`
         },
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           params: params,
           metadata: metadata
-        }
+        })
       });
 
       const oResponseData = await updateOrderResponse.json();
