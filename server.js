@@ -40,7 +40,6 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
 
   //console.log(JSON.stringify(req));
 
-  /*
   var mgmt = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.clientid,
@@ -68,8 +67,6 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     // Updated user.
     console.log(user);
   });
-  */
- res.send({msg: "yep, youcalled it."});
 });
 
 // Endpoint to serve the configuration file
