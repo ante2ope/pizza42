@@ -38,6 +38,8 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
   });
   */
 
+  console.log(JSON.stringify(req));
+
   var mgmt = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.clientid,
@@ -49,8 +51,6 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
      cacheTTLInSeconds: 10
     }
   });
-
-  console.log(JSON.stringify(req));
   
   mgmt.users.updateUserMetadata(req.body.params, req.body.metadata, function (err, user) {
     if (err) {
