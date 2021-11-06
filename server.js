@@ -4,6 +4,7 @@ const { join } = require("path");
 const authConfig = require("./auth_config.json");
 var ManagementClient = require('auth0').ManagementClient;
 let management = null;
+var util = require('util')
 
 let mgmtConfig = {  
   "audience": `https://${authConfig.domain}/api/v2/`,
@@ -50,7 +51,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
-  console.log("TEST: " + JSON.stringify(JSON.decycle(res)));
+  console.log("TEST: " + util.inspect(res));
   
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders, function (err, user) {
     if (err) {
