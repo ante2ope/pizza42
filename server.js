@@ -52,6 +52,10 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
+  var oBody = req.body;
+
+  console.log(JSON.stringify(oBody));
+
   var oID = req.body.params;
   var oOrders = req.body.metadata;
 
