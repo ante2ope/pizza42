@@ -32,7 +32,7 @@ const checkJwt = auth({
 });
 
 app.post("/api/updateUserProfile", checkJwt, function(req, res) {
-
+/*
   var options = {
     method: 'POST',
     url: `https://${authConfig.domain}}/api/v2/users`,
@@ -49,7 +49,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
   }).catch(function (error) {
     console.error(error);
   });
-
+*/
   /*
   var management = new ManagementClient({
     token: auth0.accessToken,
