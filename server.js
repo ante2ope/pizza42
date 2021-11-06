@@ -47,6 +47,8 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
      cacheTTLInSeconds: 10
     }
   });
+
+  console.log(JSON.stringify(req));
   
   mgmt.users.updateUserMetadata(req.body.params, req.body.metadata, function (err, user) {
     if (err) {
@@ -84,6 +86,9 @@ app.use(function(err, req, res, next) {
 
   next(err, req, res);
 });
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 // Listen on port 3000
 app.listen(port, () => console.log("Application running on port 3000"));
