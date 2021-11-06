@@ -5,6 +5,7 @@ const authConfig = require("./auth_config.json");
 var ManagementClient = require('auth0').ManagementClient;
 let management = null;
 var util = require('util')
+var axios = require("axios").default;
 
 let mgmtConfig = {  
   "audience": `https://${authConfig.domain}/api/v2/`,
@@ -32,6 +33,23 @@ const checkJwt = auth({
 
 app.post("/api/updateUserProfile", checkJwt, function(req, res) {
 
+  var options = {
+    method: 'POST',
+    url: `https://${authConfig.domain}}/api/v2/users`,
+    headers: {authorization: `Bearer ${token}`, 'content-type': 'application/json'},
+    data: {
+      email: 'jane.doe@example.com',
+      user_metadata: {hobby: 'surfing'},
+      app_metadata: {plan: 'full'}
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+
   /*
   var management = new ManagementClient({
     token: auth0.accessToken,
@@ -51,7 +69,8 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
-  console.log("TEST: " + util.inspect(res));
+  console.log("TEST: " + util.inspect(res.body.params));
+  console.log("TEST: " + util.inspect(res.body.orders));
   
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders)
     .then(function () {
