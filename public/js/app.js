@@ -197,7 +197,7 @@ const callApi = async () => {
       return;
     } else {
       //check if any orders exist....
-      var metadata = { "orders": []};
+      var metadata = { "user_metadata": { "orders": []}};
       if (user.meta_data) {
         metadata = user.meta_data;
       }      
