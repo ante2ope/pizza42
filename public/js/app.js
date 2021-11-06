@@ -1,3 +1,5 @@
+const { post } = require("superagent");
+
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
 
@@ -207,6 +209,7 @@ const callApi = async () => {
         headers: {
           Authorization: `Bearer ${token}`
         },
+        method: 'POST',
         body: {
           params: params,
           metadata: metadata
