@@ -69,7 +69,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
-  console.log("TEST: " + util.inspect(res.body));
+  console.log("TEST: " + util.inspect(req.body));
   //console.log("TEST: " + util.inspect(res.body.orders));
 
   /*
