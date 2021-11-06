@@ -56,7 +56,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     if (err) {
       // Handle error.
       res.send({
-        msg: "There was a problem updating your order status.", err: err, req: req
+        msg: "There was a problem updating your order status." + JSON.stringify(err)
       });
     }
 
