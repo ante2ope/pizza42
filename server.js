@@ -51,6 +51,12 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
      cacheTTLInSeconds: 10
     }
   });
+
+  var oID = req.body.params;
+  var oOrders = req.body.metadata;
+
+  console.log("ID: " + JSON.stringify(ID));
+  console.log("Orders: " + JSON.stringify(oOrders));
   
   mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders, function (err, user) {
     if (err) {
