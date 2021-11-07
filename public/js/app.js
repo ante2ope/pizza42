@@ -155,7 +155,7 @@ const updateUI = async () => {
   }  
 };
 
-const createTable = async (el, data) => {
+function createTable(el, data) {
   // data must be an array of arrays (outer array is rows).
   var tbl  = document.createElement("table");
   //tbl.style.border = "1px solid black";
