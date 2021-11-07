@@ -140,7 +140,9 @@ const updateUI = async () => {
     var oHistory = document.getElementById("History");
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
-    oOrders = oResponseData.oUser.user_metadata.orders;
+    if (oResponseData.oUser.user_metadata) {
+      if (oResponseData.oUser.user_metadata.orders) oOrders = oResponseData.oUser.user_metadata.orders;
+    }
 
     if (!oOrders) oHistory.innerHTML = "<h2>It seems you haven't ordered from us yet!  Give us a try, you'll love it!!</h2>";
     else {
