@@ -109,9 +109,10 @@ const updateUI = async () => {
   // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
     var oUser = await auth0.getUser();
+    const token = await auth0.getTokenSilently();
     document.getElementById("gated-content").classList.remove("hidden");
 
-    document.getElementById("ipt-access-token").innerHTML = await auth0.getTokenSilently();
+    document.getElementById("ipt-access-token").innerHTML = token;
 
     document.getElementById("ipt-user-profile").textContent = JSON.stringify(oUser);
     
