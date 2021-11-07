@@ -141,7 +141,7 @@ const updateUI = async () => {
     console.log(JSON.stringify(oResponseData));
 
     var oHistory = document.getElementById("History");
-    //createTable(oHistory, oUser.)
+    createTable(oHistory, oUser.user_metadata.orders)
 
   } else {
     document.getElementById("gated-content").classList.add("hidden");
