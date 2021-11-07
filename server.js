@@ -80,7 +80,7 @@ app.post("/api/getUserProfile", checkJwt, function(req, res) {
   mgmt.getUser(req.body.params)
     .then(function () {
       res.send({
-        msg: JSON.stringify(res)
+        msg: res
       });
     })
     .catch(function (err) {
