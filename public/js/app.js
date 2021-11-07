@@ -159,7 +159,6 @@ const createTable = async (el, data) => {
   try {
     // data must be an array of arrays (outer array is rows).
     var tbl  = document.createElement("table");
-    //tbl.style.border = "1px solid black";
     tbl.class = "w3-text-grey";
     var fTotal = 0;
 
@@ -175,13 +174,11 @@ const createTable = async (el, data) => {
           if (key == "#") td.width = "5px;"
           else if (key == "price") td.width = "30px;";
           tr.appendChild(td);
-          //var td = tr.appendChild(document.createTextNode(key));
         }
       }
 
       var tr = tbl.insertRow();
       for (var key in data[i]) {
-        alert(value);
         var value = data[i][key];
         var td = document.createElement("td");
         if (key == "#") td.width = "5px;"
