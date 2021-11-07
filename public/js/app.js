@@ -232,7 +232,7 @@ const callApi = async () => {
       //check if any orders exist....
       var metadata = { "orders": []};
       if (oOrders) {
-        metadata = oOrders;
+        metadata = { "orders": oOrders };
       }
       metadata.orders.push(order);
 
