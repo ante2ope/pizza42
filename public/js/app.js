@@ -62,7 +62,7 @@ const requireAuth = async (fn, targetUrl) => {
 window.onload = async () => {
   await configureClient();
 
-  updateUI();
+  //updateUI();
 
   const isAuthenticated = await auth0.isAuthenticated();
 
@@ -140,6 +140,7 @@ const updateUI = async () => {
     console.log(JSON.stringify(oResponseData));
 
     var oHistory = document.getElementById("History");
+    oHistory.innerHTML = "";
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
     var oOrders = oResponseData.oUser.user_metadata.orders;
