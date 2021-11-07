@@ -143,7 +143,7 @@ const updateUI = async () => {
     var oHistory = document.getElementById("History");
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
-    for (var data in oResponseData.user_metadata.orders) {
+    for (var data in oResponseData.oUser.user_metadata.orders) {
       hr = document.createElement("hr");
       oHistory.innerHTML = "<h2>" + data.orderdatetime + "</h2>";
       createTable(oHistory, data.orderitems);
