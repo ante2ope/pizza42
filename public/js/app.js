@@ -141,11 +141,66 @@ const updateUI = async () => {
     console.log(JSON.stringify(oResponseData));
 
     var oHistory = document.getElementById("History");
-    createTable(oHistory, oUser.user_metadata.orders)
+    document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
+    createTable(oHistory, oResponseData.user_metadata)
 
   } else {
     document.getElementById("gated-content").classList.add("hidden");
   }  
+};
+
+const createTable = async (el, data) => {
+  // data must be an array of arrays (outer array is rows).
+  var tbl  = document.createElement("table");
+  //tbl.style.border = "1px solid black";
+  tbl.class = "w3-text-grey";
+  var fTotal = 0;
+
+  for (var i = 0; i < data.length; ++i)
+  {
+    //header row
+    if (i == 0) {
+      var tr = tbl.insertRow();
+      for (var key in data[i]) {
+        var td = document.createElement("td");
+        td.style.borderBottom = "3px solid black";
+        td.innerText = key;
+        if (key == "#") td.width = "5px;"
+        else if (key == "price") td.width = "20px;";
+        tr.appendChild(td);
+        //var td = tr.appendChild(document.createTextNode(key));
+      }
+    }
+
+    var tr = tbl.insertRow();
+    for (var key in data[i]) {
+      var value = data[i][key];
+      var td = document.createElement("td");
+      if (key == "#") td.width = "5px;"
+      else if (key == "price") td.width = "20px;";
+      td.innerText = value;
+      tr.appendChild(td);
+      if (key == "price") fTotal += value;
+    }
+  }
+
+  var tr = tbl.insertRow();
+  var td = document.createElement("td");
+  td.innerText = "Total";
+  td.colSpan = 2;
+  td.style.textAlign = "right";
+  td.style.borderLeft = "";
+  td.style.borderTop = "3px solid black";
+  tr.appendChild(td);
+
+  var td = document.createElement("td");
+  td.innerText = "$ " + fTotal.toString();
+  td.style.textAlign = "left";
+  td.style.borderTop = "3px solid black";
+  tr.appendChild(td);
+
+  el.appendChild(tbl);
+
 };
 
 const callApi = async () => {

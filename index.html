@@ -24,6 +24,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   var order = { orderdatetime: new Date(), orderitems: orderitems };
   var itemNum = 0;
 
+  var orderHistory = null;
+
   function addOrderItem(name, price) {
     order.orderitems.push({"#": ++itemNum, "name": name, "price": price});
     openForm();
@@ -54,7 +56,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
-
+/*
   // data must be an array of arrays (outer array is rows).
   function tableCreate(el, data)
   {
@@ -108,6 +110,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
 
     el.appendChild(tbl);
   }
+  */
 </script>
 </head>
 <body>
@@ -160,6 +163,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       </a>
       <a href="javascript:void(0)" onclick="openMenu(event, 'Starter');">
         <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Starter</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'History');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Order History</div>
       </a>
     </div>
     <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
@@ -222,6 +228,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
       <p class="w3-text-grey">Tomatoes and mozzarella</p>
     </div><br>
 
+    <div id="History" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Seasonal Salad', 5.5)">$5.50</span></h1>
+      <p class="w3-text-grey">Ask the waiter</p>
+      <hr>
+   
+      <h1><b>Bruschetta</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Bruschetta', 8.5)">$8.50</span></h1>
+      <p class="w3-text-grey">Bread with pesto, tomatoes, onion, garlic</p>
+      <hr>
+      
+      <h1><b>Garlic bread</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Garlic bread', 9.5)">$9.50</span></h1>
+      <p class="w3-text-grey">Grilled ciabatta, garlic butter, onions</p>
+      <hr>
+      
+      <h1><b>Tomozzarella</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Tomozzarella', 10.5)">$10.50</span></h1>
+      <p class="w3-text-grey">Tomatoes and mozzarella</p>
+    </div><br>
   </div>
 </div>
 
@@ -328,6 +350,8 @@ document.getElementById("myLink").click();
     </div>
   </form>
 </div>
+
+<div id="hiddenDiv" style="display:none"></div>
 
 </body>
 </html>
