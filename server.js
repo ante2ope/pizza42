@@ -31,7 +31,9 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.patch("/api/updateUserProfile", checkJwt, checkScopesWriteProfile, function(req, res) {
+app.post("/api/updateUserProfile", checkJwt, checkScopesWriteProfile, function(req, res) {
+
+  console.log("REQ Body: " + util.inspect(req.body));
 
   var mgmt = new ManagementClient({
     domain: authConfig.domain,
@@ -44,8 +46,6 @@ app.patch("/api/updateUserProfile", checkJwt, checkScopesWriteProfile, function(
      cacheTTLInSeconds: 10
     }
   });
-
-  console.log("REQ Body: " + util.inspect(req.body));
   
   mgmt.users.updateUserMetadata(req.body.params, req.body.metadata)
     .then(function () {
