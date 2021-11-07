@@ -248,7 +248,7 @@ const callApi = async () => {
       const oResponseData = await updateOrderResponse.json();
       console.log(JSON.stringify(oResponseData));
 
-      if (oResponseData.msg == "this is my response to you!") alert("Thank you, your order has been placed!");
+      alert(oResponseData.msg);
     }
     
     
