@@ -56,61 +56,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   function closeForm() {
     document.getElementById("myForm").style.display = "none";
   }
-/*
-  // data must be an array of arrays (outer array is rows).
-  function tableCreate(el, data)
-  {
-    var tbl  = document.createElement("table");
-    //tbl.style.border = "1px solid black";
-    tbl.class = "w3-text-grey";
-    var fTotal = 0;
 
-    for (var i = 0; i < data.length; ++i)
-    {
-      //header row
-      if (i == 0) {
-        var tr = tbl.insertRow();
-        for (var key in data[i]) {
-          var td = document.createElement("td");
-          td.style.borderBottom = "3px solid black";
-          td.innerText = key;
-          if (key == "#") td.width = "5px;"
-          else if (key == "price") td.width = "20px;";
-          tr.appendChild(td);
-          //var td = tr.appendChild(document.createTextNode(key));
-        }
-      }
-
-      var tr = tbl.insertRow();
-      for (var key in data[i]) {
-        var value = data[i][key];
-        var td = document.createElement("td");
-        if (key == "#") td.width = "5px;"
-        else if (key == "price") td.width = "20px;";
-        td.innerText = value;
-        tr.appendChild(td);
-        if (key == "price") fTotal += value;
-      }
-    }
-  
-    var tr = tbl.insertRow();
-    var td = document.createElement("td");
-    td.innerText = "Total";
-    td.colSpan = 2;
-    td.style.textAlign = "right";
-    td.style.borderLeft = "";
-    td.style.borderTop = "3px solid black";
-    tr.appendChild(td);
-
-    var td = document.createElement("td");
-    td.innerText = "$ " + fTotal.toString();
-    td.style.textAlign = "left";
-    td.style.borderTop = "3px solid black";
-    tr.appendChild(td);
-
-    el.appendChild(tbl);
-  }
-  */
 </script>
 </head>
 <body>
@@ -122,6 +68,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     <a href="#menu" class="w3-bar-item w3-button">MENU</a>
     <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
     <a href="#myMap" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="#history" class="w3-bar-item w3-button">HISTORY</a>
   </div>
     <div style="float:right;" id="divProfile">
         <img id="imgProfile" />
@@ -131,7 +78,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
         <br/>
         <button id="btn-orderhisttory" disabled="true" onclick="orderHistory()">Order History</button>
         <button id="btn-call-api" disabled="true" onclick="checkout();">Checkout</button>
-      </div>
+    </div>
 </div>
   
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
