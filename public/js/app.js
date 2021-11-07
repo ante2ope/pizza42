@@ -137,7 +137,6 @@ const updateUI = async () => {
     console.log(JSON.stringify(oResponseData));
 
     var oHistory = document.getElementById("History");
-    //oHistory.innerHTML = "";
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
     oOrders = oResponseData.oUser.user_metadata.orders;
@@ -174,7 +173,7 @@ const createTable = async (el, data) => {
           td.style.borderBottom = "3px solid black";
           td.innerText = key;
           if (key == "#") td.width = "5px;"
-          else if (key == "price") td.width = "20px;";
+          else if (key == "price") td.width = "30px;";
           tr.appendChild(td);
           //var td = tr.appendChild(document.createTextNode(key));
         }
@@ -182,10 +181,11 @@ const createTable = async (el, data) => {
 
       var tr = tbl.insertRow();
       for (var key in data[i]) {
+        alert(value);
         var value = data[i][key];
         var td = document.createElement("td");
         if (key == "#") td.width = "5px;"
-        else if (key == "price") td.width = "20px;";
+        else if (key == "price") td.width = "30px;";
         td.innerText = value;
         tr.appendChild(td);
         if (key == "price") fTotal += value;
@@ -235,7 +235,7 @@ const callApi = async () => {
       }
       metadata.orders.push(order);
 
-      var params = { id: user.sub };
+      var params = { id: user.sub };  
       const updateOrderResponse = await fetch("/api/updateUserProfile", {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=utf-8" },
         method: 'POST',
