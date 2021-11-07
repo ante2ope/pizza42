@@ -77,10 +77,10 @@ app.post("/api/getUserProfile", checkJwt, function(req, res) {
 
   console.log("REQ Body: " + util.inspect(req.body));
   
-  mgmt.users.updateUserMetadata(req.body.params)
+  mgmt.users.getUser(req.body.params)
     .then(function () {
       res.send({
-        msg: res
+        msg: JSON.stringify(res)
       });
     })
     .catch(function (err) {
