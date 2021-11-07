@@ -127,7 +127,7 @@ const updateUI = async () => {
     if (oEmail) sEmail = oUser.email;
     document.getElementById("divProfileInfo").innerHTML = oUser.name + "<br/>" + sEmail;
   
-    var params = { id: user.sub };
+    var params = { id: oUser.sub };
     const oGetUserProfile = await fetch("/api/getUserProfile", {
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=utf-8" },
       method: 'POST',
