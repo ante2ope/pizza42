@@ -209,7 +209,7 @@ const createTable = async (el, data) => {
     el.appendChild(tbl);
   }
   catch (err) {
-    console.err(err);
+    console.error(err);
   }
 
 };
