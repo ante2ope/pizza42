@@ -1,5 +1,6 @@
 // The Auth0 client, initialized in configureClient()
 let auth0 = null;
+let oOrders = null;
 
 /**
  * Starts the authentication flow
@@ -139,7 +140,7 @@ const updateUI = async () => {
     oHistory.innerHTML = "";
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
-    var oOrders = oResponseData.oUser.user_metadata.orders;
+    oOrders = oResponseData.oUser.user_metadata.orders;
 
     for (var i = 0; i < oOrders.length; i++) {
       var data = oOrders[i];
@@ -230,8 +231,8 @@ const callApi = async () => {
     } else {
       //check if any orders exist....
       var metadata = { "orders": []};
-      if (user.meta_data) {
-        metadata = user.meta_data;
+      if (oOrders) {
+        metadata = oOrders;
       }
       metadata.orders.push(order);
 
