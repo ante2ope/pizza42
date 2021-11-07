@@ -144,7 +144,7 @@ const updateUI = async () => {
     for (var i = 0; i < oOrders.length; i++) {
       var data = oOrders[i];
       hr = document.createElement("hr");
-      oHistory.innerHTML = "<h2>Order on: " + data.orderdatetime + "</h2>";
+      oHistory.innerHTML += "<h2>Order on: " + data.orderdatetime + "</h2>";
       oHistory.appendChild(hr);
       await createTable(oHistory, data.orderitems);
     }
