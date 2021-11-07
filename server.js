@@ -32,30 +32,6 @@ const checkJwt = auth({
 });
 
 app.post("/api/updateUserProfile", checkJwt, function(req, res) {
-/*
-  var options = {
-    method: 'POST',
-    url: `https://${authConfig.domain}}/api/v2/users`,
-    headers: {authorization: `Bearer ${token}`, 'content-type': 'application/json'},
-    data: {
-      email: 'jane.doe@example.com',
-      user_metadata: {hobby: 'surfing'},
-      app_metadata: {plan: 'full'}
-    }
-  };
-  
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-  }).catch(function (error) {
-    console.error(error);
-  });
-*/
-  /*
-  var management = new ManagementClient({
-    token: auth0.accessToken,
-    domain: auth0.domain
-  });
-  */
 
   var mgmt = new ManagementClient({
     domain: authConfig.domain,
@@ -69,13 +45,12 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
     }
   });
 
-  console.log("TEST: " + util.inspect(req.body));
-  //console.log("TEST: " + util.inspect(res.body.orders));
+  console.log("REQ Body: " + util.inspect(req.body));
   
   mgmt.users.updateUserMetadata(req.body.params, req.body.metadata)
     .then(function () {
       res.send({
-        msg: "this is my response to you!"
+        msg: "Order profile updated successfully!"
       });
     })
     .catch(function (err) {
@@ -83,26 +58,37 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
       res.send({
         msg: "There was a problem updating your order status." + JSON.stringify(err)
       });
+  });  
+});
+
+app.post("/api/getUserProfile", checkJwt, function(req, res) {
+
+  var mgmt = new ManagementClient({
+    domain: authConfig.domain,
+    clientId: mgmtConfig.clientid,
+    clientSecret: mgmtConfig.secret,
+    scope: "read:users",
+    audience: mgmtConfig.audience,
+    tokenProvider: {
+     enableCache: true,
+     cacheTTLInSeconds: 10
+    }
   });
 
-  /*
-  mgmt.users.updateUserMetadata(req.body.params.id, req.body.metadata.orders, function (err, user) {
-    if (err) {
+  console.log("REQ Body: " + util.inspect(req.body));
+  
+  mgmt.users.updateUserMetadata(req.body.params)
+    .then(function () {
+      res.send({
+        msg: res
+      });
+    })
+    .catch(function (err) {
       // Handle error.
       res.send({
         msg: "There was a problem updating your order status." + JSON.stringify(err)
       });
-    }
-
-    res.send({
-      msg: "this is my response to you!"
-    })
-  
-    // Updated user.
-    console.log(user);
-  });
-  */
-  
+  });  
 });
 
 // Endpoint to serve the configuration file

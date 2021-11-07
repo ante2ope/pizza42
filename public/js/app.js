@@ -8,24 +8,6 @@ const login = async (targetUrl) => {
   await auth0.loginWithRedirect({
     redirect_uri: window.location.origin
   });
-  /*
-  try {
-    console.log("Logging in", targetUrl);
-
-    const options = {
-      redirect_uri: window.location.origin
-    };
-
-    if (targetUrl) {
-      options.appState = { targetUrl };
-    }
-
-    await auth0.loginWithRedirect(options);
-  } catch (err) {
-    console.log("Log in failed", err);
-  }
-  */
-
 };
 
 /**
@@ -82,28 +64,6 @@ window.onload = async () => {
 
   updateUI();
 
-  /*
-  // If unable to parse the history hash, default to the root URL
-  if (!showContentFromUrl(window.location.pathname)) {
-    showContentFromUrl("/");
-    window.history.replaceState({ url: "/" }, {}, "/");
-  }
-
-  const bodyElement = document.getElementsByTagName("body")[0];
-
-  // Listen out for clicks on any hyperlink that navigates to a #/ URL
-  bodyElement.addEventListener("click", (e) => {
-    if (isRouteLink(e.target)) {
-      const url = e.target.getAttribute("href");
-
-      if (showContentFromUrl(url)) {
-        e.preventDefault();
-        window.history.pushState({ url }, {}, url);
-      }
-    }
-  });
-
-  */
   const isAuthenticated = await auth0.isAuthenticated();
 
   if (isAuthenticated) {
@@ -144,6 +104,7 @@ const updateUI = async () => {
   document.getElementById("btn-logout").disabled = !isAuthenticated;
   document.getElementById("btn-login").disabled = isAuthenticated;
   document.getElementById("btn-call-api").disabled = !isAuthenticated;
+  //document.getElementById("btn-call-api").disabled = !isAuthenticated;
 
   // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
@@ -159,8 +120,28 @@ const updateUI = async () => {
     oProfileImg.src = oUser.picture;
     oProfileImg.width = "110";
     oProfileImg.height = "110";
-    document.getElementById("divProfileInfo").innerHTML = oUser.name + "<br/>" + oUser.email;
+
+    //unsure why, but email/validated is true for FB login ... w/o FB app verification, email isn't allowed!!
+    var sEmail = "";
+    var oEmail = oUser.email;
+    if (oEmail) sEmail = oUser.email;
+    document.getElementById("divProfileInfo").innerHTML = oUser.name + "<br/>" + sEmail;
   
+    var params = { id: user.sub };
+    const oGetUserProfile = await fetch("/api/getUserProfile", {
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json; charset=utf-8" },
+      method: 'POST',
+      body: JSON.stringify({
+        params: params
+      })
+    });
+
+    const oResponseData = await oGetUserProfile.json();
+    console.log(JSON.stringify(oResponseData));
+
+    var oHistory = document.getElementById("History");
+    //createTable(oHistory, oUser.)
+
   } else {
     document.getElementById("gated-content").classList.add("hidden");
   }  
@@ -175,32 +156,15 @@ const callApi = async () => {
 
     console.log(JSON.stringify(user));
 
-    // Make the call to the API, setting the token
-    // in the Authorization header
-    /*
-    const response = await fetch("/api/external", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    // Fetch the JSON result
-    const responseData = await response.json();
-
-    // Display the result in the output element
-    const responseElement = document.getElementById("api-call-result");
-    
-    responseElement.innerText = JSON.stringify(order, {}, 2) + "<br/><br/>" + JSON.stringify(responseData, {}, 2);
-    */
     if (!user.email_verified) {
-      var r = alert("You must verify your email address before placing an order!");
+      var r = alert("You must verify your email address before placing an order! Please follow the link in the email we sent to your address and try again.");
       return;
     } else {
       //check if any orders exist....
       var metadata = { "orders": []};
       if (user.meta_data) {
         metadata = user.meta_data;
-      }      
+      }
       metadata.orders.push(order);
 
       var params = { id: user.sub };
@@ -215,6 +179,8 @@ const callApi = async () => {
 
       const oResponseData = await updateOrderResponse.json();
       console.log(JSON.stringify(oResponseData));
+
+      if (oResponseData.msg == "this is my response to you!") alert("Thank you, your order has been placed!");
     }
     
     
