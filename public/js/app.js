@@ -146,7 +146,7 @@ const updateUI = async () => {
     for (var data in oResponseData.oUser.user_metadata.orders) {
       hr = document.createElement("hr");
       oHistory.innerHTML = "<h2>" + data.orderdatetime + "</h2>";
-      createTable(oHistory, data.orderitems);
+      await createTable(oHistory, data.orderitems);
       oHistory.appendChild(hr);  
     }
 
