@@ -137,7 +137,7 @@ const updateUI = async () => {
     console.log(JSON.stringify(oResponseData));
 
     var oHistory = document.getElementById("History");
-    oHistory.innerHTML = "";
+    //oHistory.innerHTML = "";
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
 
     oOrders = oResponseData.oUser.user_metadata.orders;
@@ -145,7 +145,6 @@ const updateUI = async () => {
     for (var i = 0; i < oOrders.length; i++) {
       var data = oOrders[i];
       hr = document.createElement("hr");
-      oHistory.appendChild(hr);
       oHistory.innerHTML = "<h2>Order on: " + data.orderdatetime + "</h2>";
       oHistory.appendChild(hr);
       await createTable(oHistory, data.orderitems);
