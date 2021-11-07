@@ -142,7 +142,7 @@ const updateUI = async () => {
 
     oOrders = oResponseData.oUser.user_metadata.orders;
 
-    if (oOrders.length == 0) oHistory.innerHTML = "<h2>It seems you haven't ordered from us yet!  Give us a try, you'll love it!!</h2>";
+    if (!oOrders) oHistory.innerHTML = "<h2>It seems you haven't ordered from us yet!  Give us a try, you'll love it!!</h2>";
     else {
       for (var i = 0; i < oOrders.length; i++) {
         var data = oOrders[i];
