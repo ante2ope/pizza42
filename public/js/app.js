@@ -142,7 +142,13 @@ const updateUI = async () => {
 
     var oHistory = document.getElementById("History");
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
-    createTable(oHistory, oResponseData.oUser.user_metadata)
+
+    for (var data in oResponseData.user_metadata.orders) {
+      hr = document.createElement("hr");
+      oHistory.innerHTML = "<h2>" + data.orderdatetime + "</h2>";
+      createTable(oHistory, data.orderitems);
+      oHistory.appendChild(hr);  
+    }
 
   } else {
     document.getElementById("gated-content").classList.add("hidden");
