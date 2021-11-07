@@ -142,7 +142,7 @@ const updateUI = async () => {
 
     var oHistory = document.getElementById("History");
     document.getElementById("hiddenDiv").innerText = JSON.stringify(oResponseData);
-    createTable(oHistory, oResponseData.user_metadata)
+    createTable(oHistory, oResponseData.oUser.user_metadata)
 
   } else {
     document.getElementById("gated-content").classList.add("hidden");
