@@ -41,7 +41,7 @@ const configureClient = async () => {
     domain: config.domain,
     client_id: config.clientId,
     audience: config.audience,
-    scope: "read:user_profile, write:user_profile"
+    scope: "read:user_profile write:user_profile"
   });
 };
 
