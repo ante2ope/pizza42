@@ -15,6 +15,10 @@ label {
   cursor: pointer;
 }
 
+.wdave-col.s4 {
+  width: 25%;
+}
+
 table {
   font-size: 28px;
   width:100%;
