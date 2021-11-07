@@ -5,7 +5,6 @@ const authConfig = require("./auth_config.json");
 var ManagementClient = require('auth0').ManagementClient;
 let management = null;
 var util = require('util')
-var axios = require("axios").default;
 
 let mgmtConfig = {  
   "audience": `https://${authConfig.domain}/api/v2/`,
@@ -23,7 +22,8 @@ app.use(express.json()) // To parse the incoming requests with JSON payloads
 
 const { requiredScopes } = require('express-oauth2-jwt-bearer');
 
-const checkScopes = requiredScopes('read:messages');
+const checkScopesReadProfile = requiredScopes('read:user_profile');
+const checkScopesWriteProfile = requiredScopes('write:user_profile');
 
 // create the JWT middleware
 const checkJwt = auth({
@@ -31,13 +31,13 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`
 });
 
-app.post("/api/updateUserProfile", checkJwt, function(req, res) {
+app.patch("/api/updateUserProfile", checkJwt, checkScopesWriteProfile, function(req, res) {
 
   var mgmt = new ManagementClient({
     domain: authConfig.domain,
     clientId: mgmtConfig.clientid,
     clientSecret: mgmtConfig.secret,
-    scope: "read:users update:users",
+    scope: "update:users",
     audience: mgmtConfig.audience,
     tokenProvider: {
      enableCache: true,
@@ -61,7 +61,7 @@ app.post("/api/updateUserProfile", checkJwt, function(req, res) {
   });  
 });
 
-app.post("/api/getUserProfile", checkJwt, function(req, res) {
+app.post("/api/getUserProfile", checkJwt, checkScopesReadProfile, function(req, res) {
 
   var mgmt = new ManagementClient({
     domain: authConfig.domain,

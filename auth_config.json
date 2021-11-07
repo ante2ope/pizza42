@@ -1,5 +1,5 @@
 {
   "domain": "ante1ope.us.auth0.com",
   "clientId": "9xyZ0uk7FhLxgqplobi7XOtwEHY3BHWl",
-  "audience": "https://ante1ope.us.auth0.com/api/v2/"
+  "audience": "https://api.mysite.com"
 }

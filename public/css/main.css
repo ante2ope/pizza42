@@ -11,7 +11,7 @@ label {
 }
 
 .orderitem:hover {
-  background-color: darkolivegreen !important;
+  background-color: darkgoldenrod !important;
   cursor: pointer;
 }
 

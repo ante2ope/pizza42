@@ -141,12 +141,15 @@ const updateUI = async () => {
 
     oOrders = oResponseData.oUser.user_metadata.orders;
 
-    for (var i = 0; i < oOrders.length; i++) {
-      var data = oOrders[i];
-      hr = document.createElement("hr");
-      oHistory.innerHTML += "<h2>Order on: " + data.orderdatetime + "</h2>";
-      oHistory.appendChild(hr);
-      await createTable(oHistory, data.orderitems);
+    if (oOrders.length == 0) oHistory.innerHTML = "<h2>It seems you haven't ordered from us yet!  Give us a try, you'll love it!!</h2>";
+    else {
+      for (var i = 0; i < oOrders.length; i++) {
+        var data = oOrders[i];
+        hr = document.createElement("hr");
+        oHistory.innerHTML += "<h2>Order on: " + data.orderdatetime + "</h2>";
+        oHistory.appendChild(hr);
+        await createTable(oHistory, data.orderitems);
+      }
     }
 
   } else {
