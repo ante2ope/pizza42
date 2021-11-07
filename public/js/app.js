@@ -146,9 +146,9 @@ const updateUI = async () => {
       var data = oOrders[i];
       hr = document.createElement("hr");
       oHistory.appendChild(hr);
-      oHistory.innerHTML = "<h2>Order on: " + oOrders[i].orderdatetime + "</h2>";
+      oHistory.innerHTML = "<h2>Order on: " + data.orderdatetime + "</h2>";
       oHistory.appendChild(hr);
-      await createTable(oHistory, oOrders[i].orderitems);
+      await createTable(oHistory, data.orderitems);
     }
 
   } else {
