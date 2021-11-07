@@ -32,13 +32,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
   }
 
   function checkout() {
-    /*
-    var total = 0;
-    for (var i=0; i < order.orderitems.length; i++) {
-      total += order.orderitems[i].price;
-    }
-    alert("Your total is: " + total);
-    */
     closeForm();
     callApi();
   }
@@ -176,20 +169,6 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
     </div><br>
 
     <div id="History" class="w3-container menu w3-padding-32 w3-white">
-      <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Seasonal Salad', 5.5)">$5.50</span></h1>
-      <p class="w3-text-grey">Ask the waiter</p>
-      <hr>
-   
-      <h1><b>Bruschetta</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Bruschetta', 8.5)">$8.50</span></h1>
-      <p class="w3-text-grey">Bread with pesto, tomatoes, onion, garlic</p>
-      <hr>
-      
-      <h1><b>Garlic bread</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Garlic bread', 9.5)">$9.50</span></h1>
-      <p class="w3-text-grey">Grilled ciabatta, garlic butter, onions</p>
-      <hr>
-      
-      <h1><b>Tomozzarella</b> <span class="orderitem w3-right w3-tag w3-dark-grey w3-round" onclick="addOrderItem('Tomozzarella', 10.5)">$10.50</span></h1>
-      <p class="w3-text-grey">Tomatoes and mozzarella</p>
     </div><br>
   </div>
 </div>
