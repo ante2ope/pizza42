@@ -62,13 +62,10 @@ const requireAuth = async (fn, targetUrl) => {
 window.onload = async () => {
   await configureClient();
 
-  //updateUI();
-
   const isAuthenticated = await auth0.isAuthenticated();
 
   if (isAuthenticated) {
     console.log("> User is authenticated");
-    //window.history.replaceState({}, document.title, window.location.pathname);
     updateUI();
     return;
   }
@@ -105,7 +102,6 @@ const updateUI = async () => {
   document.getElementById("btn-login").disabled = isAuthenticated;
   document.getElementById("btn-call-api").disabled = !isAuthenticated;
 
-  // NEW - add logic to show/hide gated content after authentication
   if (isAuthenticated) {
     var oUser = await auth0.getUser();
     const token = await auth0.getTokenSilently();
@@ -149,7 +145,7 @@ const updateUI = async () => {
       var data = oOrders[i];
       hr = document.createElement("hr");
       oHistory.appendChild(hr);
-      oHistory.innerHTML = "<h2>" + oOrders[i].orderdatetime + "</h2>";
+      oHistory.innerHTML = "<h2>Order on: " + oOrders[i].orderdatetime + "</h2>";
       oHistory.appendChild(hr);
       await createTable(oHistory, oOrders[i].orderitems);
     }
