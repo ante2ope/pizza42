@@ -147,6 +147,7 @@ const updateUI = async () => {
       oHistory.appendChild(hr);
       oHistory.innerHTML = "<h2>" + data.orderdatetime + "</h2>";
       oHistory.appendChild(hr);
+      console.log(JSON.stringify(data.orderitems));
       //await createTable(oHistory, data.orderitems);
     }
 
